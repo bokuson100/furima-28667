@@ -16,7 +16,7 @@
 ### Association
 
 - has_many : items
-- has_many : purchases 
+- has_many : purchase_histories
 - has_many : comments 
 
 ## items テーブル
@@ -29,14 +29,12 @@
 | category_id        | string     | null: false |
 | status_id          | integer    | null: false |
 | delivery_burden_id | integer    | null: false |
-| delivery_area_id   | integer    | null: false |
+| prefecture_id      | integer    | null: false |
 | delivery_days_id   | integer    | null: false |
 | price              | integer    | null: false |
 
 ### Association
-- belongs_to :user
-- has_one :purchase 
-- has_one :purchase_history
+- belongs_to :user 
 - has_many :comments
 
 
@@ -64,10 +62,9 @@
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- has_one : purchase_histories
 
-## purchases_histories
+## purchase_histories
 
 | Column  | Type    | Options    |
 | ------- | ------- | ---------- |
@@ -78,3 +75,4 @@
 
 - belongs_to :item
 - belongs_to :user
+- belongs_to :purchase
