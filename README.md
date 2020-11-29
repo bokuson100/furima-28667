@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| user               | string  | null: false, foreign_key:true |
-| item_name          | string  | null: false |
-| text               | string  | null: false |
-| category_id        | string  | null: false |
-| status_id          | integer | null: false |
-| delivery_burden_id | integer | null: false |
-| delivery_area_id   | integer | null: false |
-| delivery_days_id   | integer | null: false |
-| price              | integer | null: false |
+| Column             | Type       | Options     |
+| ------------------ | ---------- | ----------- |
+| user               | references | null: false, foreign_key:true |
+| item_name          | string     | null: false |
+| text               | string     | null: false |
+| category_id        | string     | null: false |
+| status_id          | integer    | null: false |
+| delivery_burden_id | integer    | null: false |
+| delivery_area_id   | integer    | null: false |
+| delivery_days_id   | integer    | null: false |
+| price              | integer    | null: false |
 
 ### Association
 - belongs_to :user
@@ -42,9 +42,9 @@
 
 ## comments テーブル
 
-| Column       | Type   | Options                      |
+| Column       | Type   | Options    |
 | ------------ | ------ | ---------- |
-| comment_text | string | null:false, foreign_key:true|
+| comment_text | string | null:false |
 
 ### Association
 
@@ -56,7 +56,7 @@
 | Column        | Type    | Options    |
 | ------------- | ------- | ---------- |
 | postal_code   | string  | null: false|
-| prefecture    | string  | null: false|
+| prefecture_id | integer | null: false|
 | municipality  | string  | null: false|
 | address       | integer | null: false|
 | building      | string  | 
@@ -67,12 +67,14 @@
 - belongs_to :user
 - belongs_to :item
 
-## purchases_history
+## purchases_histories
 
-| Column        | Type    | Options    |
-| ------------- | ------- | ---------- |
-| item_id       | integer | null: false, foreign_key:true |
+| Column  | Type    | Options    |
+| ------- | ------- | ---------- |
+| item_id | integer | null: false, foreign_key:true |
+| user_id | integer | null: false, foreign_key:true |
 
 ### Association
 
 - belongs_to :item
+- belongs_to :user
