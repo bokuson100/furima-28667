@@ -25,7 +25,7 @@
 | ------------------ | ---------- | ----------- |
 | user               | references | null: false, foreign_key:true |
 | item_name          | string     | null: false |
-| text               | string     | null: false |
+| text               | text       | null: false |
 | category_id        | integer    | null: false |
 | status_id          | integer    | null: false |
 | delivery_burden_id | integer    | null: false |
@@ -36,6 +36,7 @@
 ### Association
 - belongs_to :user 
 - has_many :comments
+- has_one : purchase_history
 
 
 ## comments テーブル
@@ -51,18 +52,19 @@
 
 ## purchases テーブル
 
-| Column        | Type    | Options    |
-| ------------- | ------- | ---------- |
-| postal_code   | string  | null: false|
-| prefecture_id | integer | null: false|
-| municipality  | string  | null: false|
-| address       | integer | null: false|
-| building      | string  | 
-| phone_number  | string  | null: false|
+| Column           | Type       | Options    |
+| ---------------- | ---------- | ---------- |
+| postal_code      | string     | null: false|
+| prefecture_id    | integer    | null: false|
+| municipality     | string     | null: false|
+| address          | string     | null: false|
+| building         | string     | 
+| phone_number     | string     | null: false|
+| purchase_history | references | null: false, foreign_key:true 
 
 ### Association
 
-- belongs_to : purchase_histories
+- belongs_to : purchase_history
 
 ## purchase_histories
 
