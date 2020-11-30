@@ -26,7 +26,7 @@
 | user               | references | null: false, foreign_key:true |
 | item_name          | string     | null: false |
 | text               | string     | null: false |
-| category_id        | string     | null: false |
+| category_id        | integer    | null: false |
 | status_id          | integer    | null: false |
 | delivery_burden_id | integer    | null: false |
 | prefecture_id      | integer    | null: false |
@@ -62,17 +62,17 @@
 
 ### Association
 
-- has_one : purchase_histories
+- belongs_to : purchase_histories
 
 ## purchase_histories
 
-| Column  | Type    | Options    |
-| ------- | ------- | ---------- |
-| item_id | integer | null: false, foreign_key:true |
-| user_id | integer | null: false, foreign_key:true |
+| Column | Type    | Options    |
+| ------ | ------- | ---------- |
+| item   | references | null: false, foreign_key:true |
+| user   | references | null: false, foreign_key:true |
 
 ### Association
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :purchase
+- has_one :purchase
