@@ -1,2 +1,2 @@
-require 'rails_helper'
-describe User do
+--require spec_helper
+--format documentation
