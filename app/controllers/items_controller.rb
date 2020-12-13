@@ -1,6 +1,5 @@
-class ItemsController < ApplicationController
+# frozen_string_literal: true
 
-  def index
-  end
-  
+class ItemsController < ApplicationController
+  def index; end
 end
