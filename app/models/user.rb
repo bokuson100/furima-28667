@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname,              presence: true
-  validates :email,                 presence: true
-  validates :password,              presence: true, length: { minimum: 6 }
+  # validates :email,                 presence: true
+  validates :password,              length: { minimum: 6 }
   validates :password_confirmation, presence: true, length: { minimum: 6 }
   validates :first_name_kanji,      presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :last_name_kanji,       presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ }
