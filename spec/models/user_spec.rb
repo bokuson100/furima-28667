@@ -68,13 +68,13 @@ RSpec.describe User, type: :model do
   it 'passwordは英字のみでは登録出来ないこと' do
     @user.password = 'aaaaaa'
     @user.valid?
-    expect(@user.errors.full_messages).to include("Password is invalid")
+    expect(@user.errors.full_messages).to include('Password is invalid')
   end
 
   it 'passwordは数字のみでは登録出来ないこと' do
     @user.password = '123456'
     @user.valid?
-    expect(@user.errors.full_messages).to include("Password is invalid")
+    expect(@user.errors.full_messages).to include('Password is invalid')
   end
 
   # パスワードは確認用を含めて2回入力すること
