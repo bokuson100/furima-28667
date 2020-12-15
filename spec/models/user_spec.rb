@@ -33,6 +33,11 @@ RSpec.describe User, type: :model do
   end
 
   # メールアドレスは@を含む必要があること
+  it 'emailは＠があれば登録出来ること' do
+    @user.email = 'a@a'
+    expect(@user).to be_valid
+  end
+
   # パスワードが必須であること
   it 'passwordが空では登録できない' do
     @user.password = ''
@@ -42,14 +47,14 @@ RSpec.describe User, type: :model do
 
   # パスワードは6文字以上であること
   it 'passwordが6文字以上であれば登録できる' do
-    @user.password = '123456'
-    @user.password_confirmation = '123456'
+    @user.password = 'hoge12'
+    @user.password_confirmation = 'hoge12'
     expect(@user).to be_valid
   end
 
   it 'passwordが5文字以下であれば登録できない' do
-    @user.password = '12345'
-    @user.password_confirmation = '12345'
+    @user.password = 'hoge1'
+    @user.password_confirmation = 'hoge1'
     @user.valid?
     expect(@user.errors.full_messages).to include('Password confirmation is too short (minimum is 6 characters)')
   end
@@ -58,6 +63,18 @@ RSpec.describe User, type: :model do
     @user.password = '12345' + 'abcdef'
     @user.password_confirmation = '12345' + 'abcdef'
     expect(@user).to be_valid
+  end
+
+  it 'passwordは英字のみでは登録出来ないこと' do
+    @user.password = 'aaaaaa'
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Password is invalid")
+  end
+
+  it 'passwordは数字のみでは登録出来ないこと' do
+    @user.password = '123456'
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Password is invalid")
   end
 
   # パスワードは確認用を含めて2回入力すること
