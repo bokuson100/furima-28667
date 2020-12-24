@@ -34,35 +34,35 @@ RSpec.describe Item, type: :model do
 
   # カテゴリーの情報が必須であること
   it 'カテゴリーの情報が空では保存出来ないこと' do
-    @item.category_id = '0'
+    @item.category_id = 0
     @item.valid?
     expect(@item.errors.full_messages).to include 'Category must be other than 0'
   end
 
   # 商品の状態についての情報が必須であること
   it '商品の状態が空では保存出来ないこと' do
-    @item.status_id = '0'
+    @item.status_id = 0
     @item.valid?
     expect(@item.errors.full_messages).to include 'Status must be other than 0'
   end
 
   # 配送料の負担についての情報が必須であること
   it '配送料の負担について情報が空では保存出来ないこと' do
-    @item.delivery_burden_id = '0'
+    @item.delivery_burden_id = 0
     @item.valid?
     expect(@item.errors.full_messages).to include 'Delivery burden must be other than 0'
   end
 
   # 発送元の地域についての情報が必須であること
   it '発送元の地域について情報が空では保存出来ないこと' do
-    @item.prefecture_id = '0'
+    @item.prefecture_id = 0
     @item.valid?
     expect(@item.errors.full_messages).to include 'Prefecture must be other than 0'
   end
 
   # 発送までの日数についての情報が必須であること
   it '発送まで日数の情報が空では保存出来ないこと' do
-    @item.delivery_days_id = '0'
+    @item.delivery_days_id = 0
     @item.valid?
     expect(@item.errors.full_messages).to include 'Delivery days must be other than 0'
   end
