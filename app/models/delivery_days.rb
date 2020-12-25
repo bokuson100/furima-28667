@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class DeliveryDays < ActiveHash::Base
   self.data = [
     { id: 0, name: '---' },
