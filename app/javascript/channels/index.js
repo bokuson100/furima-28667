@@ -1,7 +1,11 @@
-window.addEventListener('change',function(){
-const price = document.getElementById("item-price").value
-const fee = Math.floor(price/10);
-const profit = (price - fee);
+window.addEventListener("load", function(){
+const price = document.getElementById("item-price")
+console.log(price)
+price.addEventListener("input", function(){
+const priceInput =document.getElementById("item-price").value
+const fee = Math.floor(priceInput/10);
+const profit = (priceInput - fee);
 const taxprice = document.getElementById("add-tax-price").innerHTML = fee;
 const realprofit = document.getElementById("profit").innerHTML = profit;
+})
 })
