@@ -1,6 +1,5 @@
 window.addEventListener("load", function(){
 const price = document.getElementById("item-price")
-console.log(price)
 price.addEventListener("input", function(){
 const priceInput =document.getElementById("item-price").value
 const fee = Math.floor(priceInput/10);
