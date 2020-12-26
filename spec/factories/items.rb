@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :item do
-    item_name { 'hoge' }
+    association         :user
+    item_name           { 'hoge' }
     text                { 'hoge' }
     status_id           { 1 }
     delivery_burden_id  { 1 }
