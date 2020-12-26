@@ -121,11 +121,11 @@
   <%# /FURIMAの特徴 %>
 
   <%# 商品一覧 %>
-  <% if @items.present? %>
-  <div class='item-contents'>
+   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品' , "#", class: "subtitle" %>
     <ul class='item-lists'>
+    <% if @items.present? %>
     <% @items.each do |item| %>
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるように %>
       <li class='list'>
