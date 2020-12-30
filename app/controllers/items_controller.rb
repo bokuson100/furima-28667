@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   def edit; end
 
   def update
-    if user_signes_in?
+    if current_user.id == @item.user_id?
 
        if @item.update(item_params)
           redirect_to item_path
@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
       
     else redirect_to root_path
    end
-   
+
   end
 
   private
