@@ -26,11 +26,17 @@ class ItemsController < ApplicationController
   def edit; end
 
   def update
-    if @item.update(item_params)
-      redirect_to item_path
-    else
-      render :edit # edit.html.erbに遷移
-    end
+    if user_signes_in?
+
+       if @item.update(item_params)
+          redirect_to item_path
+       else
+          render :edit # edit.html.erbに遷移
+       end
+      
+    else redirect_to root_path
+   end
+   
   end
 
   private
