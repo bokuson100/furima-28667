@@ -2,7 +2,7 @@
 
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_item, only: %i[show edit update]
+  before_action :set_item, only: %i[show edit update destroy]
 
   def index
     @items = Item.all.order('created_at ASC')
@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(params[:id])
+    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
@@ -28,20 +28,31 @@ class ItemsController < ApplicationController
   def update
     if current_user.id == @item.user_id?
 
-       if @item.update(item_params)
-          redirect_to item_path
-       else
-          render :edit # edit.html.erbに遷移
-       end
-      
+      if @item.update(item_params)
+        redirect_to item_path
+      else
+        render :edit # edit.html.erbに遷移
+      end
+
     else redirect_to root_path
-   end
+    end
+  end
+
+  def destroy
+    if  current_user.id == @item.user_id?
+
+      @item.destroy
+      redirect_to root_path
+
+    else
+      render :index
+    end
 
   end
 
   private
 
-  def set_item
+  def set_item 
     @item = Item.find(params[:id])
   end
 
