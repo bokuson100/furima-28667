@@ -9,10 +9,6 @@ class OrdersController < ApplicationController
     @item_order = ItemOrder.new
   end
 
-  def new
-    @item_order = ItemOrder.new
-  end
-
   def create
     @item_order = ItemOrder.new(item_order_params)
     if @item_order.valid?

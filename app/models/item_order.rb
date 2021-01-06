@@ -5,9 +5,11 @@ class ItemOrder
   attr_accessor :token, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number, :item_id, :user_id
 
   with_options presence: true do
+    validates :item_id
+    validates :user_id
     validates :token
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
-    validates :prefecture_id
+    validates :prefecture_id, numericality: { greater_than: 0 }
     validates :municipality
     validates :address
     validates :phone_number, numericality: { only_integer: true }, length: { maximum: 11 }
