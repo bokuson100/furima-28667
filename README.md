@@ -36,7 +36,7 @@
 ### Association
 - belongs_to :user 
 - has_many :comments
-- has_one : purchase_history
+- has_one : orders
 
 
 ## comments テーブル
@@ -60,13 +60,13 @@
 | address          | string     | null: false|
 | building         | string     | 
 | phone_number     | string     | null: false|
-| purchase_history | references | null: false, foreign_key:true 
+| orders           | references | null: false, foreign_key:true 
 
 ### Association
 
 - belongs_to : purchase_history
 
-## purchase_histories
+## orders
 
 | Column | Type    | Options    |
 | ------ | ------- | ---------- |
