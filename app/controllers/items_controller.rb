@@ -26,20 +26,18 @@ class ItemsController < ApplicationController
   def edit; end
 
   def update
-    if current_user.id == @item.user_id?
-
+    if current_user.id == @item.user_id
       if @item.update(item_params)
         redirect_to item_path
       else
         render :edit # edit.html.erbに遷移
       end
-
     else redirect_to root_path
     end
   end
 
   def destroy
-    if  current_user.id == @item.user_id?
+    if current_user.id == @item.user_id
 
       @item.destroy
       redirect_to root_path
@@ -47,12 +45,11 @@ class ItemsController < ApplicationController
     else
       render :index
     end
-
   end
 
   private
 
-  def set_item 
+  def set_item
     @item = Item.find(params[:id])
   end
 
