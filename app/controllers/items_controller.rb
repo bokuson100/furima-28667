@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update destroy]
 
   def index
-    @items = Item.all.order('created_at ASC')
+    @items = Item.all.order(created_at: :desc)
   end
 
   def new
