@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ItemOrder, type: :model do
@@ -17,12 +19,12 @@ RSpec.describe ItemOrder, type: :model do
     it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @item_order.postal_code = '1234567'
       @item_order.valid?
-      expect(@item_order.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      expect(@item_order.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
     end
     it 'prefectureを選択していないと保存できないこと' do
       @item_order.prefecture_id = 0
       @item_order.valid?
-      expect(@item_order.errors.full_messages).to include()
+      expect(@item_order.errors.full_messages).to include
     end
     it 'municipalityが空だと保存できないこと' do
       @item_order.municipality = nil
@@ -44,9 +46,9 @@ RSpec.describe ItemOrder, type: :model do
       expect(@item_order.errors.full_messages).to include("Phone number can't be blank")
     end
     it 'phone_numberが12桁以上だと保存できないこと' do
-      @item_order.phone_number = 123456789123
+      @item_order.phone_number = 123_456_789_123
       @item_order.valid?
-      expect(@item_order.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      expect(@item_order.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
     end
     it 'カード情報（token）がないと保存できないこと' do
       @item_order.token = nil
