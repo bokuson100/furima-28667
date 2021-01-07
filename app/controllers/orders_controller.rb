@@ -5,9 +5,9 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @item_order = ItemOrder.new
      if @item.order.present? || current_user.id == @item.user.id # 売れている状態
         redirect_to root_path
-    @item_order = ItemOrder.new
      end
   end
 
