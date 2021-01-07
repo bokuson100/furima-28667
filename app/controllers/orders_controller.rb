@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_item, only: %i[index new create]
+  before_action :authenticate_user!
 
   def index
-    redirect_to root_path if @item.order.present? || current_user.id == @item.user.id # 売れている状態
+    redirect_to root_path if @item.order.present? && current_user.id == @item.user.id # 売れている状態
     @item_order = ItemOrder.new
   end
 
