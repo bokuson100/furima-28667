@@ -5,7 +5,9 @@ require 'rails_helper'
 RSpec.describe ItemOrder, type: :model do
   describe '商品購入情報の保存' do
     before do
-      @item_order = FactoryBot.build(:item_order)
+      @item = FactoryBot.create(:item)
+      @user = FactoryBot.create(:user)
+      @item_order = FactoryBot.build(:item_order, item_id:@item.id, user_id:@user.id)
     end
 
     context '商品購入ができる時' do
