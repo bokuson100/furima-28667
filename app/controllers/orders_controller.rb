@@ -5,8 +5,10 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    redirect_to root_path if @item.order.present? && current_user.id == @item.user.id # 売れている状態
+     if @item.order.present? || current_user.id == @item.user.id # 売れている状態
+        redirect_to root_path
     @item_order = ItemOrder.new
+     end
   end
 
   def create
