@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: %i[index new create]
-  before_action :move_to_new_user_session
 
   def index
-    redirect_to root_path if @item.order.present? # 売れている状態
+    redirect_to root_path if @item.order.present? || current_user.id == @item.user.id # 売れている状態
     @item_order = ItemOrder.new
   end
 
@@ -39,7 +39,4 @@ class OrdersController < ApplicationController
     )
   end
 
-  def move_to_new_user_session
-    redirect_to new_user_session_path unless user_signed_in?
-  end
 end
