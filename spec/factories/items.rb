@@ -11,5 +11,8 @@ FactoryBot.define do
     prefecture_id       { 1 }
     delivery_days_id    { 1 }
     price               { 9999 }
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
+    end
   end
 end
